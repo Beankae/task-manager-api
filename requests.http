@@ -9,8 +9,8 @@ POST http://localhost:8080/api/v1/tasks
 Content-Type: application/json
 
 {
-  "title": "Buy Vegetables",
-  "description": "Broccoli, Cauliflower",
+  "title": "Poop",
+  "description": "Test",
   "completed": false
 }
 
@@ -26,3 +26,14 @@ Content-Type: application/json
 
 ### Delete task
 DELETE http://localhost:8080/api/v1/tasks/1
+
+### Get completed tasks
+GET http://localhost:8080/api/v1/tasks/completed/true
+
+
+### Get incomplete tasks
+GET http://localhost:8080/api/v1/tasks/completed/false
+
+
+### Search tasks by title
+GET http://localhost:8080/api/v1/tasks/search?title=poop
