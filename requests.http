@@ -9,8 +9,9 @@ POST http://localhost:8080/api/v1/tasks
 Content-Type: application/json
 
 {
-  "title": "t1",
-  "description": "test"
+  "title": "Buy Vegetables",
+  "description": "Broccoli, Cauliflower",
+  "completed": false
 }
 
 ### Update task
