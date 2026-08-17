@@ -43,7 +43,7 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public boolean deleteTask(Long id){
+    public void deleteTask(Long id){
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new TaskNotFoundException(id));
         taskRepository.delete(task);
