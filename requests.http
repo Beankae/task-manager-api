@@ -11,7 +11,7 @@ Content-Type: application/json
 {
   "title": "Valid",
   "description": "Valid",
-  "completed": false
+  "completed": true
 }
 
 ### Update task
@@ -19,7 +19,7 @@ PUT http://localhost:8080/api/v1/tasks/1
 Content-Type: application/json
 
 {
-  "title": "Valid222 ",
+  "title": "test ",
   "description": "valid",
   "completed": false
 }
@@ -37,3 +37,18 @@ GET http://localhost:8080/api/v1/tasks/completed/false
 
 ### Search tasks by title
 GET http://localhost:8080/api/v1/tasks/search?title=poop
+
+### Get first 5 tasks
+GET http://localhost:8080/api/v1/tasks?page=0&size=5
+
+### Get next 5 tasks
+GET http://localhost:8080/api/v1/tasks?page=1&size=5
+
+### Sort by title ascending
+GET http://localhost:8080/api/v1/tasks?page=0&size=5&sort=title,asc
+
+### Sort by createdAt descending
+GET http://localhost:8080/api/v1/tasks?page=0&size=5&sort=createdAt,desc
+
+### Get All Tasks Paginated & Filtered
+ GET http://localhost:8080/api/v1/tasks/search?page=0&size=3&sortDir=DESC&completed=false
