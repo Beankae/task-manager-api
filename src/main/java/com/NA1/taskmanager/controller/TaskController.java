@@ -1,5 +1,7 @@
 package com.NA1.taskmanager.controller;
 
+import com.NA1.taskmanager.dto.TaskRequest;
+import com.NA1.taskmanager.dto.TaskResponse;
 import com.NA1.taskmanager.entity.Task;
 import com.NA1.taskmanager.service.TaskService;
 import jakarta.validation.Valid;
@@ -26,26 +28,26 @@ public class TaskController {
 
     //Returning ALl tasks
     @GetMapping
-    public List<Task> getAllTasks(){
+    public List<TaskResponse> getAllTasks(){
         return taskService.getAllTasks();
     }
 
     //Returning Tasks by ID
     @GetMapping("/{id}")
-    public Task getTaskById(@PathVariable Long id){
+    public TaskResponse getTaskById(@PathVariable Long id){
         return taskService.getTaskById(id);
     }
 
     //Creating each task
     @PostMapping
-    public ResponseEntity<Task> createTask(@Valid @RequestBody Task task){
-       Task savedTask = taskService.createTask(task);
+    public ResponseEntity<TaskResponse> createTask(@Valid @RequestBody TaskRequest task){
+       TaskResponse savedTask = taskService.createTask(task);
        return ResponseEntity.status(HttpStatus.CREATED).body(savedTask);
     }
 
     //Updating Task by ID
     @PutMapping("/{id}")
-    public Task updateTask(@PathVariable Long id, @Valid @RequestBody Task updatedTask){
+    public TaskResponse updateTask(@PathVariable Long id, @Valid @RequestBody TaskRequest updatedTask){
 
         return taskService.updateTask(id, updatedTask);
     }
@@ -57,12 +59,12 @@ public class TaskController {
     }
 
     @GetMapping("/completed/{status}")
-    public List<Task> getTasksByCompletion(@PathVariable boolean status){
+    public List<TaskResponse> getTasksByCompletion(@PathVariable boolean status){
         return taskService.getTaskByCompletionStatus(status);
     }
 
     @GetMapping("/search")
-    public List<Task> searchTasksByTitle(@RequestParam String title){
+    public List<TaskResponse> searchTasksByTitle(@RequestParam String title){
         return taskService.searchTasksByTitle(title);
     }
 
