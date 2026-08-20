@@ -9,9 +9,10 @@ POST http://localhost:8080/api/v1/tasks
 Content-Type: application/json
 
 {
-  "title": "Valid",
-  "description": "Valid",
-  "completed": true
+  "title": "Task {{$randomInt}}",
+  "description": "my task {{$random.superhero.descriptor}}",
+  "completed": false,
+  "categoryId": 2
 }
 
 ### Update task
@@ -51,4 +52,13 @@ GET http://localhost:8080/api/v1/tasks?page=0&size=5&sort=title,asc
 GET http://localhost:8080/api/v1/tasks?page=0&size=5&sort=createdAt,desc
 
 ### Get All Tasks Paginated & Filtered
- GET http://localhost:8080/api/v1/tasks/search?page=0&size=3&sortDir=DESC&completed=false
+GET http://localhost:8080/api/v1/tasks/search?page=0&size=3&sortDir=DESC&completed=false
+
+### Create Category
+POST http://localhost:8080/api/v1/categories
+Content-Type: application/json
+
+{
+    "name": "Low Priority",
+    "description": "only low priority tasks"
+}
